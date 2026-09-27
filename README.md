@@ -1,17 +1,31 @@
-# PW1 --- Lab A: Radioactive Decay Simulation
+# CSPC - Computer Science for Physics and Chemistry
 
-## Test Results
-Running `pytest -v` confirms that all 3 unit tests pass:
-- `test_starts_at_N0`: PASSED (verifies $N(0) = N_0$)
-- `test_rejects_negative_rate`: PASSED (verifies `ValueError` for negative decay rates)
-- `test_matches_law`: PASSED (verifies average simulation results match the analytical law $N(t) = N_0 e^{-\lambda t}$)
+My coursework repository. Each practical is under PW<n>/Lab <X>/.
 
-## Speed Comparison (`speed.py`)
-Benchmark results for $N_0 = 200,000$ atoms over 200 time steps:
+## Setup
+Create the environment for a given lab:
+    conda env create -f PW<n>/Lab\ <X>/environment.yml
+    conda activate cspc
 
-- **Pure-Python Loop (`simulate_loop`)**: `1.9497 s`
-- **Vectorised NumPy (`simulate`)**: `0.0002 s`
-- **Speed-up Factor**: NumPy version is **11577.2x** faster.
+---
 
-## Conclusion
-The simulation accurately models physical exponential decay according to $N(t) = N_0 e^{-\lambda t}$. The pure-Python implementation requires nested loops over every individual surviving atom at each time step, scaling $O(N \times \text{steps})$. By leveraging NumPy's vectorised binomial sampling (`rng.binomial`), the inner atom loop is eliminated, achieving an impressive speed-up (>11,000x) while preserving identical physical dynamics and numerical accuracy.
+## PW1 - Lab A: Reproducible Foundations
+
+**What I built:**
+- Unit tests in `test_decay.py` verifying exponential decay physics, initial conditions, and negative rate validation.
+- Performance benchmarking script (`speed.py`) comparing pure-Python loops against vectorised NumPy implementations.
+
+**Speed comparison (loop vs NumPy):**
+- loop   : 1.9497 s
+- numpy  : 0.0002 s
+- speed-up: 11577.2 x faster
+
+**Tests:** all passing? yes
+
+**Conclusion:**
+- Vectorised NumPy binomial operations (`rng.binomial`) significantly outperform pure-Python atom-by-atom loops by eliminating interpreter overhead and inner loops.
+- All three unit tests passed successfully, proving that vectorisation maintains statistical physical accuracy against the analytical law $N(t) = N_0 e^{-\lambda t}$.
+- Environment setup via Conda ensures seamless cross-machine execution and reproducibility.
+
+**Reproducibility Test (Stretch Goal):**
+- Tested with partner repository clone: The environment built seamlessly using `environment.yml` and all tests passed via `pytest -v` without requiring code modifications.
