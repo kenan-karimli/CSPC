@@ -63,3 +63,7 @@ Numerical differentiation magnifies measurement noise because computing rates of
 
 **What integrating back showed:**
 Numerical integration suppresses random noise because summing up values step-by-step allows positive and negative fluctuations to cancel out. The recovered position matched the original trajectory within 0.78 m despite the extreme noise in the acceleration data.
+
+**Bonus (2D Trajectory):**
+- Analyzed `trajectory.csv` by computing $v_x = \frac{dx}{dt}$ and $v_y = \frac{dy}{dt}$ using `np.gradient`.
+- Calculated overall speed $\sqrt{v_x^2 + v_y^2}$ and saved the visualizations as `trajectory.png`.
