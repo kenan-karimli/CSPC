@@ -44,19 +44,22 @@ The observed scatter plot closely follows the smooth analytical decay curve $N(t
 **Snakemake pipeline:**
 The Snakemake workflow automates the execution of `plot.py` to regenerate `figure.png` whenever the underlying dataset or code is updated, ensuring complete computational reproducibility.ss
 
-
 ---
 
 ## PW2 --- Lab A: Derivatives, Noise, and Integration
 
 **What I built:**
-- Computed velocity and acceleration from noisy position measurements using `np.gradient`.
-- Recovered position and velocity back using `scipy.integrate.cumulative_trapezoid`.
-- Generated `motion.png` showing position, velocity, and acceleration stacked plots.
+- Computed velocity ($v$) and acceleration ($a$) from noisy free-fall position tracking data using `np.gradient`.
+- Integrated acceleration back up to recover velocity ($v_{\text{rec}}$) and position ($y_{\text{rec}}$) using `scipy.integrate.cumulative_trapezoid`.
+- Produced a 3-panel figure saved as `motion.png` showing position, velocity, and acceleration against time.
 
-**Acceleration results:**
+**Acceleration statistics:**
 - Mean acceleration: -8.58 m/s²
 - Standard deviation of acceleration: 28.72 m/s²
+- Maximum difference between original and recovered position: 0.78 m
 
-**Why acceleration is noisy:**
-Numerical differentiation magnifies measurement noise because computing the rate of change between adjacent time steps divides tiny random position fluctuations by very small time intervals ($\Delta t$), making two successive derivatives swing wildly even when the position curve appears smooth.
+**Why acceleration was noisy:**
+Numerical differentiation magnifies measurement noise because computing rates of change between adjacent time steps divides tiny random position fluctuations by very small time intervals ($\Delta t$), causing two successive derivatives to swing wildly even when the position curve appears smooth.
+
+**What integrating back showed:**
+Numerical integration suppresses random noise because summing up values step-by-step allows positive and negative fluctuations to cancel out. The recovered position matched the original trajectory within 0.78 m despite the extreme noise in the acceleration data.
