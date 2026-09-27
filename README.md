@@ -43,3 +43,20 @@ The observed scatter plot closely follows the smooth analytical decay curve $N(t
 
 **Snakemake pipeline:**
 The Snakemake workflow automates the execution of `plot.py` to regenerate `figure.png` whenever the underlying dataset or code is updated, ensuring complete computational reproducibility.ss
+
+
+---
+
+## PW2 --- Lab A: Derivatives, Noise, and Integration
+
+**What I built:**
+- Computed velocity and acceleration from noisy position measurements using `np.gradient`.
+- Recovered position and velocity back using `scipy.integrate.cumulative_trapezoid`.
+- Generated `motion.png` showing position, velocity, and acceleration stacked plots.
+
+**Acceleration results:**
+- Mean acceleration: -8.58 m/s²
+- Standard deviation of acceleration: 28.72 m/s²
+
+**Why acceleration is noisy:**
+Numerical differentiation magnifies measurement noise because computing the rate of change between adjacent time steps divides tiny random position fluctuations by very small time intervals ($\Delta t$), making two successive derivatives swing wildly even when the position curve appears smooth.
