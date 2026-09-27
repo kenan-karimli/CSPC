@@ -1,0 +1,8 @@
+rule plot:
+    input:
+        "decay_observed.csv",
+        "plot.py"
+    output:
+        "figure.png"
+    shell:
+        "python plot.py"

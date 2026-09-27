@@ -29,3 +29,17 @@ Create the environment for a given lab:
 
 **Reproducibility Test (Stretch Goal):**
 - Tested with partner repository clone: The environment built seamlessly using `environment.yml` and all tests passed via `pytest -v` without requiring code modifications.
+
+
+---
+
+## PW1 --- Lab B: Data, Plotting, and Automation
+
+**What the data showed:**
+The observed radioactive decay dataset (`decay_observed.csv`) demonstrates a clear exponential decrease in remaining count over time.
+
+**Comparison with analytical law:**
+The observed scatter plot closely follows the smooth analytical decay curve $N(t) = N_0 e^{-\lambda t}$, confirming that the empirical data strongly matches theoretical physical predictions.
+
+**Snakemake pipeline:**
+The Snakemake workflow automates the execution of `plot.py` to regenerate `figure.png` whenever the underlying dataset or code is updated, ensuring complete computational reproducibility.ss
