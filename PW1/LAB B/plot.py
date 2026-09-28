@@ -20,17 +20,17 @@ observed = data[:, 1]
 N0 = observed[0]
 analytical = N0 * np.exp(-LAMBDA * t)
 
-# TODO 3: Make a 1x2 subplot with SHARED x and y axes[cite: 19]
+# TODO 3: Make a 1x2 subplot with SHARED x and y axes
 fig, (ax1, ax2) = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(10, 4))
 
-# Left panel: scatter of the observed data[cite: 19]
+# Left panel: scatter of the observed data
 ax1.scatter(t, observed, color="blue", label="Observed", s=15)
 ax1.set_title("Observed data")
 ax1.set_xlabel("Time (t)")
 ax1.set_ylabel("Count N(t)")
 ax1.grid(True)
 
-# Right panel: line plot of the analytical curve[cite: 19]
+# Right panel: line plot of the analytical curve
 ax2.plot(t, analytical, color="red", label="Analytical")
 ax2.set_title("Analytical")
 ax2.set_xlabel("Time (t)")
@@ -38,6 +38,7 @@ ax2.grid(True)
 
 plt.tight_layout()
 
-# TODO 4: Save the figure as figure.png[cite: 19]
+# TODO 4: Save the figure as figure.png
 plt.savefig("figure.png")
 print("figure.png generated successfully.")
+
